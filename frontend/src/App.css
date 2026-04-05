@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap');
+
+/* Define updated custom properties for a deeper navy theme and rounded corners */
+:root {
+  /* BACKGROUND MODIFICATION: Transitioned from deep navy to nearly black */
+  --bg-color: #01040A; /* Deeper Midnight Blue / Near Black */
+  
+  /* PANEL MODIFICATION: Darker, more opaque glass background */
+  --glass-bg: rgba(4, 11, 22, 0.85); /* Darker Frosted Navy Glass */
+  
+  /* Accents and text remain consistent for contrast */
+  --glass-border: rgba(0, 238, 255, 0.25); /* Ice Blue Edge Highlight */
+  --accent-cyan: #00EEFF; /* Piercing Ice Blue */
+  --text-main: #E0F7FA; /* Crisp Frosty White */
+  --text-muted: #6B8CB3; /* Muted Navy Gray */
+  --card-radius: 20px;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(0, 238, 255, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(0, 238, 255, 0.05) 0px, transparent 50%);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Base styles are retained */
+.sv-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* NAVIGATION */
+.sv-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.sv-brand {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sv-badge {
+  font-size: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  background: rgba(0, 238, 255, 0.1);
+  color: var(--accent-cyan);
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+.sv-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.pulse {
+  width: 10px;
+  height: 10px;
+  background-color: var(--accent-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--accent-cyan);
+  animation: pulse-anim 2s infinite alternate;
+}
+
+@keyframes pulse-anim {
+  from { opacity: 0.5; box-shadow: 0 0 4px var(--accent-cyan); }
+  to { opacity: 1; box-shadow: 0 0 16px var(--accent-cyan); }
+}
+
+/* MAIN GRID */
+.sv-main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .sv-main { grid-template-columns: 1fr; }
+}
+
+.sv-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--card-radius);
+  padding: 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* VIDEO FEED */
+.video-wrapper {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #000;
+  display: flex;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* TRANSLATION DATA */
+.sv-data-panel {
+  gap: 2rem;
+}
+
+.sv-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sv-prediction {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  min-height: 3.5rem;
+  line-height: 1.1;
+  text-shadow: 0 0 20px rgba(0, 238, 255, 0.3);
+}
+
+.sv-sentence-output {
+  flex-grow: 1;
+}
+
+.sv-sentence-box {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 1.5rem;
+  border-radius: 16px;
+  font-size: 1.5rem;
+  min-height: 120px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-main);
+}
+
+.sv-placeholder {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* LOCK-ON PROGRESS BAR */
+.sv-progress-container {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  margin-top: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.sv-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-cyan);
+  transform-origin: left;
+  transform: scaleX(0); /* Starts at 0 width */
+  transition: transform 0.05s linear; /* Smooth micro-animations */
+}
+
+/* UTILITY BAR (TTS & EXPORT) */
+.sv-utility-bar {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  
+  /* ALIGNMENT MODIFICATION: Changed from flex-end to center */
+  justify-content: center; /* This is the key line to center your buttons */
+}
+
+/* Individual button styling handles internal alignment for icons and text */
+.sv-utility-btn {
+  background: rgba(0, 238, 255, 0.1);
+  border: 1px solid rgba(0, 238, 255, 0.3);
+  color: var(--accent-cyan);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center; /* Vertical center icons and text internally */
+  justify-content: center; /* Horizontal center icons and text internally */
+  gap: 6px;
+  letter-spacing: 1px;
+}
+
+.sv-utility-btn:hover {
+  background: rgba(0, 238, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 238, 255, 0.2);
+}
+
+.sv-utility-btn:active {
+  transform: translateY(0);
+}
+
+/* CONTROLS LEGEND */
+.sv-controls-legend {
+  margin-top: auto;
+  display: flex;
+  gap: 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1.2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.sv-legend-item {
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+}
+
+.sv-legend-item kbd {
+  background: var(--text-main);
+  color: var(--bg-color);
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  box-shadow: 0 2px 0 rgba(255,255,255,0.5);
+} 
+/* --- SPLASH SCREEN --- */
+.sv-splash-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-color);
+  background-image: 
+    radial-gradient(circle at center, rgba(0, 238, 255, 0.08) 0%, transparent 60%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.sv-splash-content {
+  text-align: center;
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sv-splash-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0;
+  line-height: 1.2; /* <-- THIS FIXES THE OVERLAP */
+  letter-spacing: -1px;
+  text-shadow: 0 0 30px rgba(0, 238, 255, 0.2);
+}
+
+.sv-splash-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 4px;
+  margin-top: 15px; /* <-- GIVES IT BREATHING ROOM */
+  margin-bottom: 3rem;
+  display: block;
+}
+
+.sv-start-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 238, 255, 0.4);
+  color: var(--accent-cyan);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 16px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: 2px;
+  box-shadow: 0 0 20px rgba(0, 238, 255, 0.1);
+}
+
+.sv-start-btn:hover {
+  background: rgba(0, 238, 255, 0.1);
+  box-shadow: 0 0 30px rgba(0, 238, 255, 0.3);
+  transform: scale(1.02);
+}
+
+.sv-start-btn .pulse {
+  width: 8px;
+  height: 8px;
+  margin: 0;
+}

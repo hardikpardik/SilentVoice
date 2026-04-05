@@ -1,0 +1,15 @@
+# --- Python & ML Ignore (CRITICAL) ---
+__pycache__/
+MP_Data/
+logs/
+*.pyc
+venv/
+backend/venv/
+
+# --- Node Ignore ---
+node_modules/
+frontend/node_modules/
+
+# --- Environment ---
+.env
+.DS_Store
