@@ -34,6 +34,16 @@ A React application optimized with Vite.
 * Python 3.9+ (For backend ML training only)
 
 ### Frontend Setup (Running the App)
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/YOUR_USERNAME/SilentVoice.git](https://github.com/YOUR_USERNAME/SilentVoice.git)
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/hardikpardik/SilentVoice.git
+
+# 2. Navigate to the frontend directory
+cd SilentVoice/frontend
+
+# 3. Install dependencies
+npm install
+
+# 4. Start the local development server
+npm run dev
